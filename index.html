@@ -4,37 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Onam Pookkalam</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* This CSS is self-contained and does not need an internet connection to load styles. */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: linear-gradient(135deg, #FFF8E1, #FFD180);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            box-sizing: border-box;
         }
-        .title-font {
-            font-family: 'Kalam', cursive;
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 42rem;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        .title {
+            font-family: "Georgia", "Times New Roman", serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #92400e;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #b45309;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pookkalam-frame {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 4px solid #FBBF24;
+        }
+        
+        .pookkalam-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-text {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #4B5563;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+<body>
 
-    <main class="text-center bg-white/60 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-xl border border-white/50 max-w-2xl w-full">
-        <h1 class="title-font text-5xl md:text-7xl text-amber-700">Happy Onam!</h1>
-        <p class="text-lg text-amber-600 mt-2 mb-8">Here is my digital pookkalam creation.</p>
+    <main class="container">
+        <h1 class="title">Happy Onam!</h1>
+        <p class="subtitle">Here is my digital pookkalam creation.</p>
 
-        <div class="w-full aspect-square rounded-full overflow-hidden shadow-lg border-4 border-amber-300">
-            <!-- 
-              The image source now points to a local file in your project.
-              Follow the steps below to make this work.
-            -->
+        <div class="pookkalam-frame">
             <img 
               src="./pookalam.jpg" 
               alt="A beautiful pookkalam with a design of Lord Ganesha in the center." 
-              class="w-full h-full object-cover"
-              onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFF8E1/FFD180?text=Image+not+found';">
+              class="pookkalam-image"
+              onerror="this.style.display='none'; this.parentElement.innerHTML = 'Image not found. Make sure pookalam.jpg is in the same folder as index.html.';">
         </div>
 
-        <p class="mt-8 text-sm text-gray-500">Wishing you a wonderful and prosperous Onam celebration.</p>
+        <p class="footer-text">Wishing you a wonderful and prosperous Onam celebration.</p>
     </main>
 
 </body>
