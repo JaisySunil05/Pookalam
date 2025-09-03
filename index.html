@@ -6,6 +6,12 @@
     <title>My Onam Pookkalam</title>
     <style>
         /* This CSS is self-contained and does not need an internet connection to load styles. */
+        :root {
+            --petal-color-1: #FFD700; /* Gold */
+            --petal-color-2: #FFA500; /* Orange */
+            --petal-color-3: #FF6347; /* Tomato */
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: linear-gradient(135deg, #FFF8E1, #FFD180);
@@ -16,19 +22,24 @@
             justify-content: center;
             padding: 1rem;
             box-sizing: border-box;
+            overflow: hidden; /* Hide scrollbars from petals */
         }
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             border: 1px solid rgba(255, 255, 255, 0.5);
             max-width: 42rem;
             width: 100%;
+            position: relative;
+            z-index: 10;
+            /* Added fade-in animation */
+            animation: fadeIn 1.2s ease-out forwards;
         }
 
         @media (max-width: 600px) {
@@ -43,6 +54,8 @@
             font-weight: 700;
             color: #92400e;
             margin: 0;
+            /* Added text shadow for depth */
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
         }
 
         @media (max-width: 600px) {
@@ -65,8 +78,14 @@
             aspect-ratio: 1 / 1;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            /* Enhanced with a beautiful glowing effect */
+            box-shadow: 0 0 25px 5px rgba(251, 191, 36, 0.6), 0 5px 15px rgba(0,0,0,0.15);
             border: 4px solid #FBBF24;
+            transition: transform 0.3s ease;
+        }
+
+        .pookkalam-frame:hover {
+            transform: scale(1.03);
         }
         
         .pookkalam-image {
@@ -80,9 +99,86 @@
             font-size: 0.875rem;
             color: #4B5563;
         }
+
+        /* Animation for the container fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Falling Petals Animation --- */
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .petal {
+            position: absolute;
+            top: -10%;
+            background-color: var(--petal-color-1);
+            width: 15px;
+            height: 15px;
+            border-radius: 0% 70%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        .petal:nth-child(2n) {
+            background-color: var(--petal-color-2);
+        }
+        .petal:nth-child(3n) {
+            background-color: var(--petal-color-3);
+        }
+
+        .petal:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; }
+        .petal:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
+        .petal:nth-child(3) { left: 30%; animation-duration: 20s; animation-delay: 5s; }
+        .petal:nth-child(4) { left: 40%; animation-duration: 12s; animation-delay: 1s; }
+        .petal:nth-child(5) { left: 50%; animation-duration: 18s; animation-delay: 8s; }
+        .petal:nth-child(6) { left: 60%; animation-duration: 16s; animation-delay: 3s; }
+        .petal:nth-child(7) { left: 70%; animation-duration: 11s; animation-delay: 6s; }
+        .petal:nth-child(8) { left: 80%; animation-duration: 14s; animation-delay: 4s; }
+        .petal:nth-child(9) { left: 90%; animation-duration: 17s; animation-delay: 9s; }
+        .petal:nth-child(10) { left: 5%; animation-duration: 19s; animation-delay: 7s; }
+
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Div for the falling petals background effect -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
 
     <main class="container">
         <h1 class="title">Happy Onam!</h1>
